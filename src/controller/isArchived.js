@@ -1,4 +1,4 @@
-const noteModel = require("../model/note");
+const noteModel = require("../model/Note");
 
 const notesArchived = async (req, res) => {
     try {

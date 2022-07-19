@@ -1,5 +1,5 @@
 const categoryModel = require("../model/Category");
-const noteModel = require("../model/note");
+const noteModel = require("../model/Note");
 
 
 const createNote = async (req, res) => {
