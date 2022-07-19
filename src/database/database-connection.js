@@ -1,7 +1,12 @@
 const Sequelize = require('sequelize');
+const {ConnectionString} = require('connection-string')
+require('dotenv').config();
 
-const sequelize = new Sequelize('notes', 'root', '', {
-    host: 'localhost',
+const connectionString = new ConnectionString(process.env.DATABASE_URL);
+const {name} = connectionString.hosts?.[0];
+
+const sequelize = new Sequelize(process.env.DATABASE, process.env.USER, process.env.PASSWORD, {
+    host: name,
     dialect: 'mysql',
 });
 sequelize.sync({force:false})
