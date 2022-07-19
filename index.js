@@ -7,7 +7,7 @@ require('./src/database/database-connection');
 const app = express();
 
 //set the port
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 5000);
 
 
 //middleware
