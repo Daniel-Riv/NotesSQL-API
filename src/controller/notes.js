@@ -10,12 +10,13 @@ const createNote = async (req, res) => {
             desc,
             category
         });
-        res.status(200).json({
+         return res.status(200).json({
             success: true,
+            note,
             message: "Note created successfully",
         })
     } catch (error) {
-        res.status(500).json({
+        return  res.status(500).json({
             success: false,
             message: error.message,
         })
@@ -25,7 +26,11 @@ const createNote = async (req, res) => {
 
 const getAllNotes = async (req, res) => {
     try {
-        const notes = await noteModel.findAll({});
+        const notes = await noteModel.findAll({
+            where:{
+                isArchived: false
+            }
+        });
         return res.status(200).json({
             success: true,
             data: notes,
