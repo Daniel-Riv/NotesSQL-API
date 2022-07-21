@@ -1,3 +1,4 @@
+const categoryModel = require("../model/Category");
 const noteModel = require("../model/Note");
 
 const notesArchived = async (req, res) => {
@@ -61,7 +62,13 @@ const getNotesArchived = async (req, res) => {
         const notes = await noteModel.findAll({
             where: {
                 isArchived: true,
-            },
+            },include: [{
+                model: categoryModel,
+                attributes: ['idCategory','nameCategory'],
+                through: {
+                    attributes: ['noteIdNote', 'categoryIdCategory']
+                }
+            }] 
         });
         if (notes.length !== 0) {
             return res.status(200).json({
@@ -82,6 +89,8 @@ const getNotesArchived = async (req, res) => {
         })
     }
 }
+
+
 
 module.exports = {
     notesArchived,

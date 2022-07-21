@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
 require('./src/database/database-connection');
+require('./src/model/associantion');
 
 
 const app = express();
@@ -16,7 +17,7 @@ app.use(cors());
 
 //routes
 app.use('/api/notes', require('./src/routes/notes'));
-
+app.use('/api/categories', require('./src/routes/category'));
 
 app.listen(app.get('port'), () => {
     console.log(`Server is running on port ${app.get('port')}`);
