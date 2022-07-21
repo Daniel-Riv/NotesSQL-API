@@ -5,14 +5,14 @@ require('dotenv').config();
 const connectionString = new ConnectionString(process.env.JAWSDB_URL);
 const {name} = connectionString.hosts?.[0];
 
-/* const sequelize = new Sequelize(process.env.DATABASE, process.env.USER, process.env.PASSWORD, {
+const sequelize = new Sequelize(process.env.DATABASE, process.env.USER, process.env.PASSWORD, {
     host: name,
     dialect: 'mysql',
-}); */
-const sequelize = new Sequelize('notes','root','', {
+});
+/* const sequelize = new Sequelize('notes','root','', {
     host: 'localhost',
     dialect: 'mysql', 
-});
+}); */
 sequelize.sync({force:false})
     .then(() => {
         console.log('Connection database has been established successfully.');
