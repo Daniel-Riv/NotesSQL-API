@@ -9,10 +9,7 @@ const sequelize = new Sequelize(process.env.DATABASE, process.env.USER, process.
     host: name,
     dialect: 'mysql',
 });
-/* const sequelize = new Sequelize('notes','root','', {
-    host: 'localhost',
-    dialect: 'mysql', 
-}); */
+
 sequelize.sync({force:false})
     .then(() => {
         console.log('Connection database has been established successfully.');
